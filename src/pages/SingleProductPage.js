@@ -15,7 +15,13 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
 const SingleProductPage = () => {
-  return <h4>single product page</h4>
+  const {id} = useParams();
+  const {state} = useProductsContext();
+  console.log("state", state.single_product_loading)
+
+  return (
+      <Wrapper></Wrapper>
+  )
 }
 
 const Wrapper = styled.main`

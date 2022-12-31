@@ -3,7 +3,33 @@ import styled from 'styled-components'
 import { services } from '../utils/constants'
 
 const Services = () => {
-  return <h4>services </h4>
+  return <Wrapper>
+    <div className="section-center">
+      <article>
+        <h3 className="header">
+          custom furniture <br />
+          built only for you
+        </h3>
+        <p>
+          We specialize in bespoke kitchens,  bedrooms and living room furniture.
+          All designed and created to give you the perfect solution to compliment your home regardless of space or budget.
+          Our designs range from a vast traditional to contemporary range of furnitures, we can offer any solution to fit any space in your homes.
+        </p>
+      </article>
+      <div className="services-center">
+        {services.map((service) => {
+          const {id, icon, title, text} = service;
+          return (
+              <article key={id} className="service">
+                <span className="icon">{icon}</span>
+                <h4>{title}</h4>
+                <p>{text}</p>
+              </article>
+          )
+        })}
+      </div>
+    </div>
+  </Wrapper>
 }
 
 const Wrapper = styled.section`
