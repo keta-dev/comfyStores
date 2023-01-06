@@ -7,17 +7,17 @@ import Loading from './Loading'
 import Product from './Product'
 
 const FeaturedProducts = () => {
-  const { state } = useProductsContext();
+  const { 
+    state: {
+    products_loading: loading,
+    products_error: error,
+    featured_products: featured,
+  } 
+} = useProductsContext();
 
-  const {
-      products_loading,
-      products_error,
-      featured_products,
-  } = state;
+  if (loading) return <Loading />
 
-  if (products_loading) return <Loading />
-
-  if (products_error) return <Error />
+  if (error) return <Error />
 
   return (
       <Wrapper className="section">
@@ -26,7 +26,7 @@ const FeaturedProducts = () => {
           <div className="underline"></div>
         </div>
           <div className="section-center featured">
-            {featured_products.slice(0,3).map((feature) => {
+            {featured.slice(0,3).map((feature) => {
               return <Product key={feature.id} {...feature} />
             })}
           </div>
@@ -57,4 +57,70 @@ const Wrapper = styled.section`
   }
 `
 
-export default FeaturedProducts
+export default FeaturedProducts;
+
+// import React from "react";
+// import { useProductsContext } from "../context/products_context";
+// import { Link } from "react-router-dom";
+// import styled from "styled-components";
+// import Error from "./Error";
+// import Loading from "./Loading";
+// import Product from "./Product";
+
+// const FeaturedProducts = () => {
+//   const {
+//     state: {
+//       featured_products: featured,
+//       products_loading: loading,
+//       products_error: error,
+//     },
+//   } = useProductsContext();
+//   const data = useProductsContext();
+//   console.log("data", data);
+
+//   if (loading) {
+//     return <Loading />;
+//   }
+//   if (error) {
+//     return <Error />;
+//   } else {
+//     return (
+//       <Wrapper className='section'>
+//         <div className='title'>
+//           <h2>featured products</h2>
+//           <div className='underline'></div>
+//         </div>
+//         <div className='section-center featured'>
+//           {featured.map((product) => {
+//             return <Product key={product.id} {...product} />;
+//           })}
+//         </div>
+//       </Wrapper>
+//     );
+//   }
+// };
+
+// const Wrapper = styled.section`
+//   background: var(--clr-grey-10);
+//   .featured {
+//     margin: 4rem auto;
+//     display: grid;
+//     gap: 2.5rem;
+//     img {
+//       height: 225px;
+//     }
+//   }
+//   .btn {
+//     display: block;
+//     width: 148px;
+//     margin: 0 auto;
+//     text-align: center;
+//   }
+//   @media (min-width: 576px) {
+//     .featured {
+//       grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+//     }
+//   }
+// `;
+
+// export default FeaturedProducts;

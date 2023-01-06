@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { Navbar, Sidebar, Footer } from './components'
-import { Home, About, Cart, Products, SingleProduct, Checkout, Error } from './pages'
+import { Home, About, Cart, Products, SingleProduct, Checkout, Error, CreateStore } from './pages'
 
 function App() {
   return (
@@ -13,6 +13,7 @@ function App() {
         <Route exact path='/about'><About /></Route>
         <Route exact path='/cart'><Cart /></Route>
         <Route exact path='/products'><Products /></Route>
+        <Route exact path='/store'><CreateStore /></Route>
         <Route exact path='/products/:id' children={<SingleProduct />}/>
         <Route exact path='/checkout'><Checkout /></Route>
         <Route path='*'><Error /></Route>

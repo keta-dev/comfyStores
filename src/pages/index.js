@@ -5,6 +5,7 @@ import About from './AboutPage'
 import Cart from './CartPage'
 import Error from './ErrorPage'
 import Checkout from './CheckoutPage'
+import CreateStore from './CreateStore'
 import Private from './PrivateRoute'
 
 // const index = () => {
@@ -13,4 +14,4 @@ import Private from './PrivateRoute'
 //   )
 // }
 
-export { Home, Products, SingleProduct, About, Checkout, Private, Cart, Error }
+export { Home, Products, SingleProduct, About, Checkout, Private, Cart, Error, CreateStore }
