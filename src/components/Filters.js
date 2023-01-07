@@ -5,7 +5,62 @@ import { getUniqueValues, formatPrice } from '../utils/helpers'
 import { FaCheck } from 'react-icons/fa'
 
 const Filters = () => {
-  return <h4>filters</h4>
+  const {
+    filters: {
+      text,
+      company,
+      category,
+      color,
+      min_price,
+      max_price,
+      price,
+      shipping,
+    },
+    updateFilters,
+    clearFilters,
+    all_products,
+  } = useFilterContext();
+
+  const categories = getUniqueValues(all_products, 'category');
+  const companies = getUniqueValues(all_products, 'company');
+  const colors = getUniqueValues(all_products, 'colors');
+
+  return (
+    <Wrapper>
+      <div className="content">
+        <form onSubmit={(e) => e.preventDefault()}>
+          {/* search input */}
+          <div className="form-control">
+            <input 
+              type="text" 
+              name='text' 
+              placeholder='search' 
+              className='search-input'
+              value={text}
+              onChange={updateFilters}
+            />
+          </div>
+          {/* search input ends */}
+          {/* category */}
+          <div className="form-control">
+            <h5>category</h5>
+            <div>
+              {categories.map((c, i) => {
+                return <button key={i}
+                onClick={updateFilters}
+                name="category"
+                type='button'
+                className={`${category === c.toLowerCase() ? 'active' : null}`}>
+                  {c}
+                </button>
+              })}
+            </div>
+          </div>
+          {/* category ends */}
+        </form>
+      </div>
+    </Wrapper>
+  )
 }
 
 const Wrapper = styled.section`
