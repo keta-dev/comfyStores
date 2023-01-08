@@ -6,7 +6,8 @@ import Cart from './CartPage'
 import Error from './ErrorPage'
 import Checkout from './CheckoutPage'
 import CreateStore from './CreateStore'
-import Private from './PrivateRoute'
+import PrivateRoute from './PrivateRoute'
+import AuthWrapper from './AuthWrapper'
 
 // const index = () => {
 //   return (
@@ -14,4 +15,4 @@ import Private from './PrivateRoute'
 //   )
 // }
 
-export { Home, Products, SingleProduct, About, Checkout, Private, Cart, Error, CreateStore }
+export { Home, Products, SingleProduct, About, Checkout, PrivateRoute, Cart, Error, CreateStore, AuthWrapper }
